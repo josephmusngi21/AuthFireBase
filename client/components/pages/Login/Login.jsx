@@ -47,4 +47,28 @@ const styles = StyleSheet.create({
     height: '60%',
     marginTop: 110,
   },
+  header: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  textWelcome: {
+
+  },
+  textInput: {
+
+  },
+  form: {
+
+  },
+  input: {
+
+  },
+  submitButton: {
+
+  },
+  textForgot: {
+    
+  }
 });
