@@ -1,91 +1,118 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, StyleSheet, Button } from "react-native";
+import { View, Text, TextInput, StyleSheet, TouchableOpacity } from "react-native";
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
-  const handlePress = () => {
-    console.log("Login pressed with email:", email, "and password:", password);
-  };
+    const handlePress = () => {
+        setEmail("");
+        setPassword("");
+        console.log("Login pressed with email:", email, "and password:", password);
+    };
 
-  return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.textWelcome}>Welcome Back</Text>
-        <Text style={styles.textEnter}>Enter your details below</Text>
-      </View>
-      <View style={styles.form}>
-        <View style={styles.input}>
-          <TextInput
-            placeholder="Enter Email/Phone No."
-            value={email}
-            onChangeText={setEmail}
-          />
-          <TextInput
-            placeholder="Enter Password"
-            secureTextEntry={true}
-            value={password}
-            onChangeText={setPassword}
-          />
+    return (
+        <View style={[styles.screen, { justifyContent: "flex-end" }]}>
+            <View style={[styles.container, { height: "80%" }]}>
+                <View style={styles.header}>
+                    <Text style={styles.textWelcome}>Welcome Back</Text>
+                    <Text style={styles.textEnter}>Enter your details below</Text>
+                </View>
+                <View style={styles.form}>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Enter Email/Phone No."
+                        value={email}
+                        onChangeText={setEmail}
+                        keyboardType="email-address"
+                        autoCapitalize="none"
+                    />
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Enter Password"
+                        secureTextEntry={true}
+                        value={password}
+                        onChangeText={setPassword}
+                    />
+                    <TouchableOpacity style={styles.submitButton} onPress={handlePress}>
+                        <Text style={styles.submitButtonText}>Login</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                        <Text style={styles.textForgot}>Forgot your password?</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
         </View>
-        <Button
-          style={styles.submitButton}
-          title="Login"
-          onPress={handlePress}
-        />
-        <Text style={styles.textForgot}>Forgot your password?</Text>
-      </View>
-    </View>
-  );
+    );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "lightblue",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-around",
-    alignContent: "center",
-    width: "80%",
-    height: "60%",
-    marginTop: 110,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-  },
-  header: {
-    backgroundColor: 'lightcoral',
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 16,
-  },
-  textWelcome: {
-    fontSize: 22,
-    fontWeight: "700",
-    letterSpacing: 0.65,
-  },
-  textEnter: {
-    fontSize: 13,
-    fontWeight: "400",
-    letterSpacing: 0.35,
-    marginTop: 3,
-    color: "gray",
-  },
-  form: {
-    backgroundColor: "lightgreen",
-    height: 275,
-    marginTop: 10,
-    marginBottom: 10,
-    paddingTop: 20,
-    paddingBottom: 20,
-  },
-  input: {
-    marginBottom: 20,
-    paddingHorizontal: 16,
-    gap: 12,
-  },
-  submitButton: {},
-  textForgot: {},
+    screen: {
+        flex: 1,
+        backgroundColor: "#eaf6fb",
+        justifyContent: "center",
+        alignItems: "center",
+        width: "100%",
+    },
+    container: {
+        backgroundColor: "#fff",
+        width: "100%",
+        borderRadius: 20,
+        padding: 24,
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.15,
+        shadowRadius: 8,
+        elevation: 6,
+    },
+    header: {
+        alignItems: "center",
+        marginBottom: 24,
+    },
+    textWelcome: {
+        fontSize: 24,
+        fontWeight: "700",
+        letterSpacing: 0.65,
+        color: "#222",
+    },
+    textEnter: {
+        fontSize: 14,
+        fontWeight: "400",
+        letterSpacing: 0.35,
+        marginTop: 6,
+        color: "gray",
+    },
+    form: {
+        width: "100%",
+    },
+    input: {
+        backgroundColor: "#f2f2f2",
+        borderRadius: 10,
+        paddingHorizontal: 17,
+        paddingVertical: 12,
+        fontSize: 16,
+        marginBottom: 16,
+        borderWidth: 1,
+        borderColor: "#e0e0e0",
+    },
+    submitButton: {
+        backgroundColor: "#3b82f6",
+        borderRadius: 10,
+        paddingVertical: 14,
+        alignItems: "center",
+        marginBottom: 12,
+    },
+    submitButtonText: {
+        color: "#fff",
+        fontSize: 16,
+        fontWeight: "600",
+        letterSpacing: 0.5,
+    },
+    textForgot: {
+        color: "#3b82f6",
+        textAlign: "center",
+        marginTop: 4,
+        textDecorationLine: "underline",
+        fontSize: 14,
+    },
 });
