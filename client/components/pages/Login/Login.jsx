@@ -13,7 +13,7 @@ export default function Login() {
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.textWelcome}>Welcome Back</Text>
-        <Text style={styles.textInput}>Enter your details below</Text>
+        <Text style={styles.textEnter}>Enter your details below</Text>
       </View>
       <View style={styles.form}>
         <View style={styles.input}>
@@ -29,7 +29,11 @@ export default function Login() {
             onChangeText={setPassword}
           />
         </View>
-        <Button style={styles.submitButton} title="Login" onPress={handlePress} />
+        <Button
+          style={styles.submitButton}
+          title="Login"
+          onPress={handlePress}
+        />
         <Text style={styles.textForgot}>Forgot your password?</Text>
       </View>
     </View>
@@ -38,37 +42,50 @@ export default function Login() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'lightblue',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    alignContent: 'center',
-    width: '80%',
-    height: '60%',
+    backgroundColor: "lightblue",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-around",
+    alignContent: "center",
+    width: "80%",
+    height: "60%",
     marginTop: 110,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
   },
   header: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: 'lightcoral',
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 16,
   },
   textWelcome: {
-
+    fontSize: 22,
+    fontWeight: "700",
+    letterSpacing: 0.65,
   },
-  textInput: {
-
+  textEnter: {
+    fontSize: 13,
+    fontWeight: "400",
+    letterSpacing: 0.35,
+    marginTop: 3,
+    color: "gray",
   },
   form: {
-
+    backgroundColor: "lightgreen",
+    height: 275,
+    marginTop: 10,
+    marginBottom: 10,
+    paddingTop: 20,
+    paddingBottom: 20,
   },
   input: {
-
+    marginBottom: 20,
+    paddingHorizontal: 16,
+    gap: 12,
   },
-  submitButton: {
-
-  },
-  textForgot: {
-    
-  }
+  submitButton: {},
+  textForgot: {},
 });
