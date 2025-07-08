@@ -1,23 +1,28 @@
-import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+const { initializeApp } = require("firebase/app");
+const { getAnalytics, isSupported } = require("firebase/analytics");
+const dotenv = require("dotenv");
 
-// TODO: Replace the following with your app's Firebase project configuration
-// See: https://firebase.google.com/docs/web/learn-more#config-object
+// Load environment variables
+dotenv.config();
 
 const firebaseConfig = {
-    apiKey: "",
-    authDomain: "",
-    databaseURL: "",
-    projectId: "",
-    storageBucket: "",
-    messagingSenderId: "",
-    appId: "",
-    measurementId: ""
-}
+    apiKey: process.env.apiKey,
+    authDomain: process.env.authDomain,
+    projectId: process.env.projectId,
+    storageBucket: process.env.storageBucket,
+    messagingSenderId: process.env.messagingSenderId,
+    appId: process.env.appId,
+    measurementId: process.env.measurementId
+};
+console.log("Firebase Config:", firebaseConfig);
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-
-// Initialize Firebase Authentication and get a reference to the service
-const auth = getAuth(app);
+// Only initialize analytics if supported and in a browser environment
+if (typeof window !== "undefined") {
+    isSupported().then(supported => {
+        if (supported) {
+            getAnalytics(app);
+        }
+    });
+}
